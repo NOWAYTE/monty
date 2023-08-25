@@ -1,45 +1,50 @@
+#define _GNU_SOURCE
 #include "monty.h"
-bus_t bus = {NULL, NULL, NULL, 0};
+global_t global;
+
 /**
-* main - monty code interpreter
-* @argc: number of arguments
-* @argv: monty file location
-* Return: 0 on success
-*/
+ * main - entry point of program
+ * @argc: argumemt count
+ * @argv: argument vector
+ * Return: 0 (success)
+ */
 int main(int argc, char *argv[])
 {
-	char *content;
-	FILE *file;
-	size_t size = 0;
-	ssize_t read_line = 1;
+	int nbytes = 0;
+	size_t nsize = 0;
+	unsigned int count = 1;
 	stack_t *stack = NULL;
-	unsigned int counter = 0;
 
+	global.flag = 1;
+	global.content = NULL;
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
-	bus.file = file;
-	if (!file)
+	global.file = fopen(argv[1], "r");
+	if (global.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (read_line > 0)
+	while ((nbytes = getline(&global.content, &nsize, global.file)) != EOF)
 	{
-		content = NULL;
-		read_line = getline(&content, &size, file);
-		bus.content = content;
-		counter++;
-		if (read_line > 0)
+		add_null(global.content);
+		if (global.content[0] != 35)
 		{
-			execute(content, &stack, counter, file);
+			global.token = strtok(global.content, " \t\n");
+			global.code = global.token;
+			if (global.code != NULL)
+			{
+				global.token = strtok(NULL, " \t\n");
+				funct(global.code)(&stack, count);
+			}
+			count++;
 		}
-		free(content);
 	}
-	free_stack(stack);
-	fclose(file);
-return (0);
+	free_stack(&stack);
+	free(global.content);
+	fclose(global.file);
+	return (0);
 }
