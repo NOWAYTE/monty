@@ -77,5 +77,7 @@ void s_push(stack_t **stack, unsigned int line_number);
 void s_pall(stack_t **stack, unsigned int line_number);
 void s_pint(stack_t **stack, unsigned int line_number);
 void s_pop(stack_t **stack, unsigned int line_number);
+void _verify(stack_t **stack, unsigned int line_number);
+int check_int(char *num);
 
 #endif

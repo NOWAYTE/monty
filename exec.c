@@ -11,23 +11,6 @@ void (*funct(char *token))(stack_t **stack, unsigned int line_number)
 	instruction_t opco[] = {
 		{"push", s_push},
 		{"pall", s_pall},
-		{"pint", s_pint},
-		{"pop", s_pop},
-		{"swap", s_swap},
-		{"add", s_add},
-		{"nop", s_nop},
-		{"sub", s_sub},
-		{"err", s_error},
-		{"div", s_div},
-		{"mul", s_mul},
-		{"mod", s_mod},
-		{"#", s_nop},
-		{"pstr", s_pstr},
-		{"pchar", s_pchar},
-		{"rotl", s_rotl},
-		{"rotr", s_rotr},
-		{"stack", s_stack},
-		{"queue", s_queue},
 		{NULL, NULL}};
 	int i = 0;
 	int op;
