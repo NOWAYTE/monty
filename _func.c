@@ -15,23 +15,36 @@ void f_push(stack_t **head, unsigned int counter)
 		for (; bus.arg[j] != '\0'; j++)
 		{
 			if (bus.arg[j] > 57 || bus.arg[j] < 48)
-				f = 1; }
+
+				f = 1;
+		}
 		if (f == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", counter);
+
 			fclose(bus.file);
+
 			free(bus.content);
 			free_stack(*head);
-			exit(EXIT_FAILURE); }}
+			exit(EXIT_FAILURE);
+		}
+	}
 	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+	{ 
+		fprintf(stderr, "L%d: usage: push integer\n", counter);
 		fclose(bus.file);
 		free(bus.content);
+
 		free_stack(*head);
-		exit(EXIT_FAILURE); }
+
+		exit(EXIT_FAILURE); 
+	}
 	n = atoi(bus.arg);
 	if (bus.lifi == 0)
+
 		addnode(head, n);
 	else
+
 		addqueue(head, n);
 }
 bus_t bus = {NULL, NULL, NULL, 0};
@@ -43,10 +56,11 @@ bus_t bus = {NULL, NULL, NULL, 0};
 */
 int main(int argc, char *argv[])
 {
-	char *content;
+	char *con;
 	FILE *file;
-	size_t size = 0;
-	ssize_t read_line = 1;
+	size_t s = 0;
+
+	ssize_t r_line = 1;
 	stack_t *stack = NULL;
 	unsigned int counter = 0;
 
@@ -56,26 +70,36 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
+
 	bus.file = file;
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (read_line > 0)
+	while (r_line > 0)
 	{
-		content = NULL;
-		read_line = getline(&content, &size, file);
-		bus.content = content;
+		con = NULL;
+		r_line = getline(&con, &s, file);
+
+		bus.content = con;
+
 		counter++;
-		if (read_line > 0)
+
+		if (r_line > 0)
 		{
-			execute(content, &stack, counter, file);
+			execute(con, &stack, counter, file);
 		}
-		free(content);
+		free(con);
+
 	}
+
+
 	free_stack(stack);
+
 	fclose(file);
+
+
 return (0);
 }
 
