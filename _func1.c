@@ -39,7 +39,6 @@ void _mod(stack_t **head, unsigned int counter)
 	*head = h->next;
 	free(h);
 }
-#include "monty.h"
 /**
  * _mul - multiplies the top two elements of the stack.
  * @head: stack head
@@ -71,8 +70,6 @@ void _mul(stack_t **head, unsigned int counter)
 	*head = h->next;
 	free(h);
 }
-
-#include "monty.h"
 /**
   *_nop- nothing
   *@head: stack head
@@ -85,7 +82,6 @@ void _nop(stack_t **head, unsigned int counter)
 	(void) head;
 }
 
-#include "monty.h"
 /**
  * _pall - prints the stack
  * @head: stack head
@@ -106,8 +102,6 @@ void _pall(stack_t **head, unsigned int counter)
 		h = h->next;
 	}
 }
-
-#include "monty.h"
 /**
  * p_char - prints the char at the top of the stack,
  * followed by a new line
