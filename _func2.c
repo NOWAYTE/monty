@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * a_node - add node to the head stack
+ * addnode - add node to the head stack
  * @head: head of the stack
  * @n: new_value
  * Return: no return
 */
-void a_node(stack_t **head, int n)
+void addnode(stack_t **head, int n)
 {
 
 	stack_t *n_node, *ax;
@@ -32,12 +32,12 @@ void a_node(stack_t **head, int n)
 	*head = n_node;
 }
 /**
-  *_sub- sustration
+  *f_sub- sustration
   *@head: stack head
   *@counter: line_number
   *Return: no return
  */
-void _sub(stack_t **head, unsigned int counter)
+void f_sub(stack_t **head, unsigned int counter)
 {
 	stack_t *ax;
 
@@ -70,12 +70,12 @@ void _sub(stack_t **head, unsigned int counter)
 	free(ax);
 }
 /**
- * _pall - prints stack
+ * f_pall - prints stack
  * @head: stack head
  * @counter: no used
  * Return: no return
 */
-void _pall(stack_t **head, unsigned int counter)
+void f_pall(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 
@@ -94,12 +94,12 @@ void _pall(stack_t **head, unsigned int counter)
 	}
 }
 /**
- * _pop - prints the top
+ * f_pop - prints the top
  * @head: stack head
  * @counter: line_number
  * Return: no return
 */
-void _pop(stack_t **head, unsigned int counter)
+void f_pop(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 
@@ -118,12 +118,12 @@ void _pop(stack_t **head, unsigned int counter)
 	free(h);
 }
 /**
-  *_rotr- rotates the stack to the bottom
+  *f_rotr- rotates the stack to the bottom
   *@head: stack head
   *@counter: line_number
   *Return: no return
  */
-void _rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
+void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
 {
 	stack_t *c;
 

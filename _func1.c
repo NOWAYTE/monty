@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * _swap - adds top elements
+ * f_swap - adds top elements
  * @head: head
  * @counter: l_number
  * Return: no return
 */
-void _swap(stack_t **head, unsigned int counter)
+void f_swap(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 
@@ -36,24 +36,24 @@ void _swap(stack_t **head, unsigned int counter)
 	h->next->n = ax;
 }
 /**
-  *_nop- nothing
+  *f_nop- nothing
   *@head: head
   *@counter: l_number
   *Return: no return type
  */
-void _nop(stack_t **head, unsigned int counter)
+void f_nop(stack_t **head, unsigned int counter)
 {
 	(void) counter;
 
 	(void) head;
 }
 /**
- * _pstr - prints the starting string
+ * f_pstr - prints the starting string
  * @head: head
  * @counter: l_number
  * Return: no return type
 */
-void _pstr(stack_t **head, unsigned int counter)
+void f_pstr(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 	(void)counter;
@@ -71,12 +71,12 @@ void _pstr(stack_t **head, unsigned int counter)
 	printf("\n");
 }
 /**
- * _stack - prints the top
+ * f_stack - prints the top
  * @head: stack head
  * @counter: line_number
  * Return: no return
 */
-void _stack(stack_t **head, unsigned int counter)
+void f_stack(stack_t **head, unsigned int counter)
 {
 	(void)head;
 
@@ -87,12 +87,12 @@ void _stack(stack_t **head, unsigned int counter)
 
 
 /**
- * _div - divides the top two elements of the stack.
+ * f_div - divides the top two elements of the stack.
  * @head: stack head
  * @counter: line_number
  * Return: no return
 */
-void _div(stack_t **head, unsigned int counter)
+void f_div(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 

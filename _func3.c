@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
-  *_rotl- rotates the stack to the top
+  *f_rotl- rotates the stack to the top
   *@head: head
   *@counter: line_number
   *Return: no return
  */
-void _rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
+void f_rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
 {
 	stack_t *t = *head, *ax;
 
@@ -31,12 +31,12 @@ void _rotl(stack_t **head,  __attribute__((unused)) unsigned int counter)
 
 }
 /**
- * _pint - prints top
+ * f_pint - prints top
  * @head: head
  * @counter: line_number
  * Return: no return
 */
-void _pint(stack_t **head, unsigned int counter)
+void f_pint(stack_t **head, unsigned int counter)
 {
 	if (*head == NULL)
 	{
@@ -59,7 +59,7 @@ void _pint(stack_t **head, unsigned int counter)
  * @counter: line_number
  * Return: no return
 */
-void _queue(stack_t **head, unsigned int counter)
+void f_queue(stack_t **head, unsigned int counter)
 {
 	(void)head;
 
@@ -69,12 +69,12 @@ void _queue(stack_t **head, unsigned int counter)
 }
 
 /**
- * a_queue - add node to the tail stack
+ * addqueue - add node to the tail stack
  * @n: new_value
  * @head: head of the stack
  * Return: no return
 */
-void a_queue(stack_t **head, int n)
+void addqueue(stack_t **head, int n)
 {
 	stack_t *n_node, *ax;
 
@@ -110,12 +110,12 @@ void a_queue(stack_t **head, int n)
 	}
 }
 /**
- * _mod - computes division
+ * f_mod - computes division
  * @head: head
  * @counter: l_number
  * Return: no return type
 */
-void _mod(stack_t **head, unsigned int counter)
+void f_mod(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 

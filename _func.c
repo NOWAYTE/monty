@@ -1,11 +1,11 @@
 #include "monty.h"
 /**
- * _push - add node
+ * f_push - add node
  * @head: head
  * @counter: l_number
  * Return: no return
 */
-void _push(stack_t **head, unsigned int counter)
+void f_push(stack_t **head, unsigned int counter)
 {
 	int n, j = 0, f = 0;
 	if (bus.arg)
@@ -42,10 +42,10 @@ void _push(stack_t **head, unsigned int counter)
 	n = atoi(bus.arg);
 	if (bus.lifi == 0)
 
-		a_node(head, n);
+		addnode(head, n);
 	else
 
-		a_queue(head, n);
+		addqueue(head, n);
 }
 bus_t bus = {NULL, NULL, NULL, 0};
 /**
@@ -113,21 +113,21 @@ return (0);
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
 	instruction_t opst[] = {
-				{"push", _push}, {"pall", _pall}, {"pint", _pint},
-				{"pop", _pop},
-				{"swap", _swap},
-				{"add", _add},
-				{"nop", _nop},
-				{"sub", _sub},
-				{"div", _div},
-				{"mul", _mul},
-				{"mod", _mod},
-				{"pchar", _pchar},
-				{"pstr", _pstr},
-				{"rotl", _rotl},
-				{"rotr", _rotr},
-				{"queue", _queue},
-				{"stack", _stack},
+				{"push", f_push}, {"pall", f_pall}, {"pint", f_pint},
+				{"pop", f_pop},
+				{"swap", f_swap},
+				{"add", f_add},
+				{"nop", f_nop},
+				{"sub", f_sub},
+				{"div", f_div},
+				{"mul", f_mul},
+				{"mod", f_mod},
+				{"pchar", f_pchar},
+				{"pstr", f_pstr},
+				{"rotl", f_rotl},
+				{"rotr", f_rotr},
+				{"queue", f_queue},
+				{"stack", f_stack},
 				{NULL, NULL}
 				};
 	unsigned int i = 0;
@@ -142,6 +142,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 	{
 		if (strcmp(op, opst[i].opcode) == 0)
 		{	opst[i].f(stack, counter);
+
 			return (0);
 		}
 		i++;
