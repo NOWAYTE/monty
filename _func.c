@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * f_push - add node to the stack
- * @head: stack head
- * @counter: line_number
+ * f_push - add node
+ * @head: head
+ * @counter: l_number
  * Return: no return
 */
 void f_push(stack_t **head, unsigned int counter)
@@ -49,10 +49,10 @@ void f_push(stack_t **head, unsigned int counter)
 }
 bus_t bus = {NULL, NULL, NULL, 0};
 /**
-* main - monty code interpreter
-* @argc: number of arguments
-* @argv: monty file location
-* Return: 0 on success
+* main - interpreter
+* @argc: arguments
+* @argv: location
+* Return: 0 (success)
 */
 int main(int argc, char *argv[])
 {
@@ -102,15 +102,13 @@ int main(int argc, char *argv[])
 
 return (0);
 }
-
-#include "monty.h"
 /**
-* execute - executes the opcode
-* @stack: head linked list - stack
-* @counter: line_counter
-* @file: poiner to monty file
+* execute - execute opcode
+* @stack: head
+* @counter: l_counter
+* @file: pointer to monty
 * @content: line content
-* Return: no return
+* Return: no return type
 */
 int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
@@ -139,6 +137,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 	if (op && op[0] == '#')
 		return (0);
 	bus.arg = strtok(NULL, " \n\t");
+
 	while (opst[i].opcode && op)
 	{
 		if (strcmp(op, opst[i].opcode) == 0)
@@ -148,39 +147,41 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 		i++;
 	}
 	if (op && opst[i].opcode == NULL)
-	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+
 		fclose(file);
+
 		free(content);
+
 		free_stack(*stack);
-		exit(EXIT_FAILURE); }
+		exit(EXIT_FAILURE);
+	}
+
 	return (1);
 }
-
-#include "monty.h"
 /**
-* free_stack - frees a doubly linked list
-* @head: head of the stack
+* free_stack - frees list
+* @head: head 
 */
 void free_stack(stack_t *head)
 {
-	stack_t *aux;
+	stack_t *ax;
 
-	aux = head;
+	ax = head;
 	while (head)
 	{
-		aux = head->next;
+		ax = head->next;
 		free(head);
-		head = aux;
+		head = ax;
 	}
 }
-
-#include "monty.h"
 /**
- * f_pchar - prints the char at the top of the stack,
- * followed by a new line
- * @head: stack head
- * @counter: line_number
- * Return: no return
+ * f_pchar - prints char at top,
+ * @head: head
+ * @counter: l_number
+ * Return: no return type
 */
 void f_pchar(stack_t **head, unsigned int counter)
 {
@@ -191,7 +192,9 @@ void f_pchar(stack_t **head, unsigned int counter)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", counter);
 		fclose(bus.file);
+
 		free(bus.content);
+
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -200,9 +203,11 @@ void f_pchar(stack_t **head, unsigned int counter)
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", counter);
 		fclose(bus.file);
 		free(bus.content);
+
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
+
 	printf("%c\n", h->n);
 }
 
