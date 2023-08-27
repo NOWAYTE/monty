@@ -1,66 +1,77 @@
 #include "monty.h"
 /**
- * f_mul - multiplies the top two elements of the stack.
+ * _mul - multiplies the top two elements of the stack.
  * @head: stack head
  * @counter: line_number
  * Return: no return
 */
-void f_mul(stack_t **head, unsigned int counter)
+void _mul(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
-	int len = 0, aux;
+	int l = 0, ax;
+
 
 	h = *head;
 	while (h)
 	{
 		h = h->next;
-		len++;
+		l++;
 	}
-	if (len < 2)
+	if (l < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
 		fclose(bus.file);
+
 		free(bus.content);
 		free_stack(*head);
+
 		exit(EXIT_FAILURE);
 	}
 	h = *head;
-	aux = h->next->n * h->n;
-	h->next->n = aux;
+	ax = h->next->n * h->n;
+
+	h->next->n = ax;
 	*head = h->next;
+
 	free(h);
 }
-
-#include "monty.h"
 /**
- * f_add - adds the top two elements of the stack.
- * @head: stack head
- * @counter: line_number
- * Return: no return
+ * _add - adds top elements
+ * @head: head
+ * @counter: l_number
+ * Return: no return type
 */
-void f_add(stack_t **head, unsigned int counter)
+void _add(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
-	int len = 0, aux;
+
+	int l = 0, ax;
 
 	h = *head;
 	while (h)
 	{
 		h = h->next;
-		len++;
+		l++;
 	}
-	if (len < 2)
+	if (l < 2)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", counter);
 		fclose(bus.file);
+
 		free(bus.content);
+
 		free_stack(*head);
+
 		exit(EXIT_FAILURE);
 	}
 	h = *head;
-	aux = h->n + h->next->n;
-	h->next->n = aux;
+	ax = h->n + h->next->n;
+
+	h->next->n = ax;
+
+
 	*head = h->next;
+
 	free(h);
 }
 

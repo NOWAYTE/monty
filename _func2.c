@@ -1,87 +1,105 @@
 #include "monty.h"
 /**
- * addnode - add node to the head stack
+ * a_node - add node to the head stack
  * @head: head of the stack
  * @n: new_value
  * Return: no return
 */
-void addnode(stack_t **head, int n)
+void a_node(stack_t **head, int n)
 {
 
-	stack_t *new_node, *aux;
+	stack_t *n_node, *ax;
 
-	aux = *head;
-	new_node = malloc(sizeof(stack_t));
-	if (new_node == NULL)
-	{ printf("Error\n");
-		exit(0); }
-	if (aux)
-		aux->prev = new_node;
-	new_node->n = n;
-	new_node->next = *head;
-	new_node->prev = NULL;
-	*head = new_node;
+	ax = *head;
+
+	n_node = malloc(sizeof(stack_t));
+
+	if (n_node == NULL)
+	{
+		printf("Error\n");
+		exit(0);
+	}
+
+	if (ax)
+		ax->prev = n_node;
+
+	n_node->n = n;
+
+	n_node->next = *head;
+
+	n_node->prev = NULL;
+
+	*head = n_node;
 }
-
-#include "monty.h"
 /**
-  *f_sub- sustration
+  *_sub- sustration
   *@head: stack head
   *@counter: line_number
   *Return: no return
  */
-void f_sub(stack_t **head, unsigned int counter)
+void _sub(stack_t **head, unsigned int counter)
 {
-	stack_t *aux;
-	int sus, nodes;
+	stack_t *ax;
 
-	aux = *head;
-	for (nodes = 0; aux != NULL; nodes++)
-		aux = aux->next;
-	if (nodes < 2)
+	int s, n;
+
+	ax = *head;
+
+	for (n = 0; ax != NULL; n++)
+
+		ax = ax->next;
+
+	if (n < 2)
 	{
+
 		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
 		fclose(bus.file);
+
 		free(bus.content);
+
 		free_stack(*head);
+
 		exit(EXIT_FAILURE);
 	}
-	aux = *head;
-	sus = aux->next->n - aux->n;
-	aux->next->n = sus;
-	*head = aux->next;
-	free(aux);
-}
 
-#include "monty.h"
+	ax = *head;
+	s = ax->next->n - ax->n;
+
+	ax->next->n = s;
+	*head = ax->next;
+	free(ax);
+}
 /**
- * f_pall - prints the stack
+ * _pall - prints stack
  * @head: stack head
  * @counter: no used
  * Return: no return
 */
-void f_pall(stack_t **head, unsigned int counter)
+void _pall(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
+
 	(void)counter;
 
 	h = *head;
 	if (h == NULL)
 		return;
+
 	while (h)
 	{
+
 		printf("%d\n", h->n);
+
 		h = h->next;
 	}
 }
-#include "monty.h"
 /**
- * f_pop - prints the top
+ * _pop - prints the top
  * @head: stack head
  * @counter: line_number
  * Return: no return
 */
-void f_pop(stack_t **head, unsigned int counter)
+void _pop(stack_t **head, unsigned int counter)
 {
 	stack_t *h;
 
@@ -89,7 +107,9 @@ void f_pop(stack_t **head, unsigned int counter)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
 		fclose(bus.file);
+
 		free(bus.content);
+
 		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
@@ -97,31 +117,35 @@ void f_pop(stack_t **head, unsigned int counter)
 	*head = h->next;
 	free(h);
 }
-
-#include "monty.h"
 /**
-  *f_rotr- rotates the stack to the bottom
+  *_rotr- rotates the stack to the bottom
   *@head: stack head
   *@counter: line_number
   *Return: no return
  */
-void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
+void _rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
 {
-	stack_t *copy;
+	stack_t *c;
 
-	copy = *head;
+	c = *head;
+
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}
-	while (copy->next)
+	while (c->next)
 	{
-		copy = copy->next;
+		c = c->next;
+
 	}
-	copy->next = *head;
-	copy->prev->next = NULL;
-	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
+	c->next = *head;
+
+	c->prev->next = NULL;
+
+
+	c->prev = NULL;
+	(*head)->prev = c;
+
+	(*head) = c;
 }
 
