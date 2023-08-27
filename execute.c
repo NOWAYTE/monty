@@ -1,4 +1,3 @@
-execute.c
 #include "monty.h"
 /**
 * execute - executes the opcode
