@@ -1,5 +1,4 @@
 #include "monty.h"
-#include<stdio.h>
 bs_t bs = {NULL, NULL, NULL, 0};
 /**
 * main - monty code interpreter
